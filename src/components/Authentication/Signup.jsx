@@ -93,23 +93,23 @@ const Signup = () => {
   const errorClass = "text-red-500 font-semibold text-sm";
 
   return (
-    <div className="h-[85.5vh] w-full bg-zinc-100">
-      <div className="h-[45%] w-full bg-blue-500 text-white p-5 flex flex-col gap-7">
-        <h1 className="text-2xl font-semibold">
+    <div className="h-[85.5vh] w-full bg-zinc-100 lg:h-[80vh] lg:w-[55vw] lg:mx-auto lg:flex lg:mt-8 lg:rounded lg:overflow-hidden">
+      <div className="h-[45%] w-full bg-blue-500 text-white p-5 flex flex-col gap-7 lg:h-full lg:w-[40%] lg:pt-10">
+        <h1 className="text-2xl font-semibold lg:text-3xl lg:pb-5">
           <p>Looks like</p>
           <p> you're new here!</p>
         </h1>
-        <div className="font-semibold text-zinc-300">
+        <div className="font-semibold text-zinc-300 lg:text-lg">
           <p>Sign up with your email id to</p>
           <p> get started</p>
         </div>
         <img
-          className="h-25 w-40 object-contain"
+          className="h-25 w-40 object-contain lg:h-55 lg:w-75 lg:mt-23"
           src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"
           alt="Logo"
         />
       </div>
-      <div className="h-[50%] w-full px-8 py-5">
+      <div className="h-[50%] w-full px-8 py-5 lg:h-full lg:w-[60%] lg:mt-8">
         <form onSubmit={handleSubmit((signUpData) => handleSignUp(signUpData))}>
           {/* Full Name input start */}
           <div className="relative w-full h-12">
