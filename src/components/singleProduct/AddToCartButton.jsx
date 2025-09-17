@@ -45,7 +45,7 @@ const AddToCartButton = ({ singleProductOpenedDetails }) => {
     : cartProducts.find((elem) => elem.id === singleProductOpenedDetails.id);
 
   return (
-    <div className="h-[20%] w-full  flex justify-center items-center">
+    <div className="h-[16%] w-full flex justify-center items-center lg:h-[20%]">
       {
         <button
           onClick={() => {
@@ -56,12 +56,12 @@ const AddToCartButton = ({ singleProductOpenedDetails }) => {
               return navigate("/Login");
             }
           }}
-          className="cursor-pointer transition-transform hover:scale-105 hover:bg-amber-600 select-none uppercase flex items-center justify-center gap-2 py-3 px-5 bg-amber-500 rounded font-bold text-white"
+          className="cursor-pointer transition-transform hover:scale-105 hover:bg-amber-600 select-none uppercase flex items-center justify-center gap-2 py-2 px-6 bg-amber-500 rounded font-bold text-white text-sm lg:px-10 lg:py-3 lg:text-xl"
         >
           {isInCart ? (
-            <FaCartShopping className="text-xl" />
+            <FaCartShopping className="text-lg lg:text-2xl" />
           ) : (
-            <FaCartPlus className="text-xl" />
+            <FaCartPlus className="text-lg lg:text-2xl" />
           )}
           {isInCart ? "Go to Cart" : "Add to Cart"}
         </button>

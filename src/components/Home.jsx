@@ -22,15 +22,15 @@ const Home = () => {
   }
 
   return (
-    <div className="h-[91vh] w-full flex flex-wrap overflow-y-auto gap-5 justify-center py-3">
+    <div className="h-[85.5vh] w-full flex flex-wrap overflow-y-auto gap-3 justify-center py-3 lg:h-[90vh] lg:gap-5 lg:pt-5">
       {searchProducts.length > 0 ? (
         searchProducts.map((elem) => (
           <SingleProduct key={elem.id} singleProductData={elem} />
         ))
       ) : (
-        <div className="w-full m-5 h-[80vh] rounded flex flex-col justify-center items-center">
+        <div className="w-full h-[85.5vh] flex flex-col justify-center items-center">
           <MdSearchOff className="text-8xl" />
-          <h4 className="mt-3 text-4xl font-[Inter] font-semibold">
+          <h4 className="text-4xl font-[Inter] font-semibold">
             Product is not found!
           </h4>
         </div>

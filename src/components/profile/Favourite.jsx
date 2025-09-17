@@ -1,28 +1,14 @@
 import React, { useContext } from "react";
 import { myContext } from "../../utility/Context";
-import { SiFlipkart } from "react-icons/si";
-import { FaCartArrowDown, FaHistory } from "react-icons/fa";
-import { MdFavoriteBorder } from "react-icons/md";
-import { RiShutDownLine } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaRupeeSign } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { FaHeart } from "react-icons/fa";
 
 const Favourite = () => {
-  const { setLoginUserData, loginUserData, setIsLogin, setOrderedProducts } =
-    useContext(myContext);
+  const { setLoginUserData, loginUserData } = useContext(myContext);
 
   const navigate = useNavigate();
-
-  const handleLogoutButton = () => {
-    const userConfirmation = confirm("Are you sure you want to logout ?");
-    if (userConfirmation) {
-      setIsLogin(false);
-      setLoginUserData({ cartProducts: [], favList: [], addressData: {} });
-      navigate("/Login");
-      setOrderedProducts([]);
-    }
-  };
 
   const removeFavListItem = (favListItemid) => {
     setLoginUserData((prev) => {
@@ -41,56 +27,19 @@ const Favourite = () => {
     "hover:bg-amber-500 hover:text-white hover:scale-102 transition-all bg-white rounded text-lg font-semibold flex justify-center gap-8 pt-3 w-full h-[13vh]";
 
   return (
-    <div className="flex">
-      <div className="h-[75vh] w-[23vw] ml-5 mt-5 rounded">
-        <div className="w-full flex flex-col items-center">
-          <div className="py-3 w-full text-xl capitalize font-semibold bg-white mb-3 text-center rounded">
-            Hello ! {loginUserData.fullName}
-          </div>
-          <div className="w-full py-3 text-xl rounded font-semibold bg-white text-center">
-            {loginUserData.email}
-          </div>
+    <div className="h-[85.5vh] w-full flex flex-wrap justify-center overflow-y-auto lg:h-[88vh]">
+      <div className="w-full h-[13%] flex flex-col items-center pt-3">
+        <div className="py-1 px-8 text-lg capitalize font-semibold bg-white mb-3 text-center rounded lg:px-10 lg:py-2">
+          Hello ! {loginUserData.fullName}
         </div>
-        <div className="flex gap-3 flex-wrap justify-center mt-3">
-          <Link
-            to={`/Login/Profile/${loginUserData.fullName}/orders`}
-            className={favouriteLinkClassName}
-          >
-            My Orders
-            <SiFlipkart className="text-7xl" />
-          </Link>
-          <Link to={"/Cart"} className={favouriteLinkClassName}>
-            My Cart
-            <FaCartArrowDown className="text-7xl" />
-          </Link>
-          <Link
-            to={"/Login/Profile/:fullName/favourite"}
-            className={favouriteLinkClassName}
-          >
-            Favourite
-            <MdFavoriteBorder className="text-7xl" />
-          </Link>
-          <Link
-            to={"/Login/Profile/:fullName/orders-history"}
-            className={favouriteLinkClassName}
-          >
-            Orders History
-            <FaHistory className="text-7xl" />
-          </Link>
-        </div>
-        <div className="w-full flex justify-center">
-          <button
-            onClick={handleLogoutButton}
-            className="flex items-center justify-center gap-2 hover:scale-105 hover:bg-amber-600 mt-5 px-4 py-2 bg-amber-500 rounded text-white text-lg font-semibold"
-          >
-            <RiShutDownLine />
-            Logout
-          </button>
+        <div className="py-1 px-7 text-lg rounded text-red-600 font-semibold bg-white flex items-center justify-center gap-2 lg:bg-zinc-50">
+          Favourite List
+          <FaHeart />
         </div>
       </div>
-      <div className="h-[75vh] w-[70vw] ml-5 mt-5 flex flex-wrap justify-center rounded overflow-y-auto bg-zinc-100">
+      <div className="h-full w-full mt-5 px-5 bg-zinc-50 lg:mt-7 lg:w-[60%] lg:h-[80%] lg:bg-zinc-300">
         {loginUserData.favList.length === 0 ? (
-          <div className="flex flex-col justify-center items-center">
+          <div className="flex flex-col justify-center items-center mt-45 lg:bg-zinc-50 lg:h-full lg:mt-0 lg:w-full lg:rounded">
             <img
               className="object-contain"
               src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/mywishlist-empty_39f7a5.png"
@@ -102,28 +51,28 @@ const Favourite = () => {
           loginUserData.favList.map((elem) => (
             <div
               key={elem.id}
-              className="h-[25vh] w-[95%] rounded flex relative border mt-5"
+              className="h-[20vh] w-full rounded flex relative border mt-4 lg:h-[30vh] lg:w-full lg:mx-auto lg:bg-zinc-50 lg:border-none"
             >
               <MdDelete
                 onClick={() => removeFavListItem(elem.id)}
-                className="absolute text-3xl top-2 right-2 hover:scale-110"
+                className="absolute text-xl top-2 right-2 hover:scale-110 lg:text-2xl"
               />
-              <div className="h-full w-[20%]">
+              <div className="h-full w-[30%]">
                 <img
                   onClick={(id) => goToSingleProductDetails(elem.id)}
-                  className="hover:scale-105 h-full w-full object-contain p-3.5"
+                  className="hover:scale-105 h-full w-full object-contain p-3 lg:p-5 transition-all"
                   src={elem.image}
                   alt={`${elem.title}'s image`}
                 />
               </div>
-              <div className="w-[70%] pt-10 pl-3 text-xl flex flex-col gap-5">
+              <div className="h-full w-[70%] pt-10 pl-3 text-lg leading-6 flex flex-col gap-4 lg:leading-normal lg:text-xl">
                 <h2
                   onClick={(id) => goToSingleProductDetails(elem.id)}
-                  className="hover:text-blue-800"
+                  className="hover:text-blue-800 line-clamp-2 lg:line-clamp-none"
                 >
                   {elem.title}
                 </h2>
-                <div className="flex items-center font-semibold">
+                <div className="flex items-center font-semibold lg:text-2xl">
                   <FaRupeeSign />
                   <h1>{Math.round(elem.price)}</h1>
                 </div>

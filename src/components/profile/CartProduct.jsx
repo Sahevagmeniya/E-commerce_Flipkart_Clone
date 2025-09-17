@@ -92,8 +92,8 @@ const CartProduct = ({ cartProductDetails }) => {
   };
 
   return (
-    <div className="mt-5 max-w-screen-lg mx-auto bg-zinc-100 h-[30vh] rounded overflow-hidden flex items-center gap-5">
-      <div className="h-full w-[25%] rounded p-5">
+    <div className="w-full mt-2 bg-zinc-50 h-[26vh] flex items-center gap-5 lg:w-[75%] lg:mx-auto lg:h-[36vh] lg:rounded">
+      <div className="h-full w-[40%] p-3.5">
         <img
           onClick={goToSingleProductDetails}
           className="transition-all cursor-pointer hover:scale-105 h-full w-full object-contain"
@@ -101,41 +101,41 @@ const CartProduct = ({ cartProductDetails }) => {
           alt={`${title}'s image`}
         />
       </div>
-      <div className="h-full w-[75%] p-4">
-        <h2
-          onClick={goToSingleProductDetails}
-          className="cursor-pointer hover:text-blue-800 text-2xl font-[Inter] transition-all mb-2"
-        >
-          {title}
-        </h2>
-        <h2 className="flex items-center text-xl mb-4">
+      <div className="h-full w-[60%] p-3 flex flex-col gap-2">
+        <div>
+          <h2
+            onClick={goToSingleProductDetails}
+            className="cursor-pointer hover:text-blue-800 line-clamp-2 leading-5 font-[Inter] transition-all lg:line-clamp-2 lg:text-2xl lg:leading-normal"
+          >
+            {title}
+          </h2>
+        </div>
+        <h2 className="flex items-center text-xl font-semibold">
           <FaRupeeSign />
           {Math.round(price)}
         </h2>
-        <div className=" flex items-center gap-1.5 mb-3">
+        <div className="flex items-center gap-1.5">
           <CiCircleMinus
             onClick={cartQtyMinus}
-            className="cursor-pointer text-4xl hover:text-blue-500"
+            className="cursor-pointer text-3xl hover:text-blue-500 lg:text-4xl"
           />
-          <span className="border h-8 w-auto  font-bold px-3 text-center text-xl">
+          <span className="border h-7 font-bold px-3 text-center text-lg lg:3xl">
             {qty}
           </span>
           <CiCirclePlus
             onClick={cartQtyPlus}
-            className="cursor-pointer text-4xl hover:text-blue-500"
+            className="cursor-pointer text-3xl hover:text-blue-500 lg:text-4xl"
           />
         </div>
-        <div className="flex items-center justify-between pr-5">
-          <div className="text-2xl flex items-center font-semibold">
-            Total Price : <FaRupeeSign /> {Math.round(price) * qty}
-          </div>
-          <button
-            onClick={handleRemoveCartProduct}
-            className="uppercase px-3 py-2 bg-blue-600 rounded text-white transition-all font-semibold hover:bg-blue-700 "
-          >
-            Remove Product
-          </button>
+        <div className="flex items-center font-bold lg:text-xl">
+          Total Price : <FaRupeeSign /> {Math.round(price) * qty}
         </div>
+        <button
+          onClick={handleRemoveCartProduct}
+          className="uppercase px-4 py-1 w-fit bg-blue-600 rounded text-white transition-all font-semibold hover:bg-blue-700 text-sm lg:text-lg lg:px-7 lg:py-1.5"
+        >
+          Remove Product
+        </button>
       </div>
     </div>
   );

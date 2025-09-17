@@ -50,20 +50,20 @@ const Login = () => {
     "absolute left-0 top-0 w-full text-sm text-zinc-500 pointer-events-none transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-focus:top-0 peer-focus:text-sm";
 
   return (
-    <div className="h-[75vh] w-[55vw] m-auto my-10 bg-zinc-100 flex items-center rounded overflow-hidden">
-      <div className="left h-full w-[40%] bg-blue-500 text-white p-10">
+    <div className="h-[85.5vh] w-full bg-zinc-100">
+      <div className="h-[50%] w-full bg-blue-500 text-white p-5 flex flex-col gap-10 justify-center">
         <h1 className="text-3xl font-semibold">Login</h1>
-        <div className="font-semibold text-lg text-zinc-300 mt-6">
+        <div className="font-semibold text-lg text-zinc-300">
           <p>Get access to your Orders,</p>
           <p>Wishlist and Recommendations</p>
         </div>
         <img
-          className="mt-[85%] ml-[8%]"
+          className="h-30 w-50 object-contain"
           src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/login_img_c4a81e.png"
           alt="logo"
         />
       </div>
-      <div className="right h-full w-[60%] p-10">
+      <div className="h-[50%] w-full p-8">
         <form onSubmit={handleSubmit((loginData) => handleLogin(loginData))}>
           {/* Email input start*/}
           <div className="relative w-full h-12">

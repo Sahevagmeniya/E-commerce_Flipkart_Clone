@@ -54,40 +54,40 @@ const Orders = () => {
     setOrderedProducts((prev) => prev.filter((elem) => elem.id !== clickedId));
 
   return (
-    <div className="max-w-screen-xl mx-auto mt-5 rounded h-[85vh] overflow-hidden">
+    <div className="w-full mt-3 lg:w-[75vw] lg:mx-auto lg:mt-5 lg:h-[45vh]">
       {/* Login details */}
-      <div className="w-full h-[8vh] bg-zinc-100 rounded flex items-center px-5 justify-between">
-        <div className="flex items-center gap-3">
-          <span className="px-2 py-0.5 bg-zinc-300 text-blue-500 rounded">
+      <div className="w-full h-[6vh] bg-zinc-100 flex items-center px-5 justify-between lg:h-[8vh] lg:rounded">
+        <div className="flex items-center gap-2">
+          <span className="px-2 py-0.5 bg-zinc-300 text-blue-500 rounded lg:font-semibold">
             1
           </span>
-          <div className="text-xl uppercase font-semibold text-zinc-500">
+          <div className="text-lg uppercase font-semibold text-zinc-500 lg:text-xl">
             Login
           </div>
           <span>
-            <MdOutlineDone className="text-2xl text-blue-500" />
+            <MdOutlineDone className="text-xl text-blue-500 lg:text-3xl" />
           </span>
         </div>
-        <div className="text-lg">{loginUserData.email}</div>
+        <div className="lg:text-xl">{loginUserData.email}</div>
       </div>
       <AddressDetails />
       {/* Order summary */}
       <div
-        className={`${isAddressFormOpen ? "bg-zinc-100" : "bg-blue-500"} ${
-          isAddressFormOpen && "rounded"
-        } h-[8vh] max-w-screen-xl mt-2 rounded-t flex items-center`}
+        className={`${
+          isAddressFormOpen ? "bg-zinc-100" : "bg-blue-500"
+        } h-[6vh] w-full mt-3 flex items-center lg:h-[8vh] lg:rounded-t`}
       >
-        <div className="px-4">
+        <div className="px-5">
           <div className="flex items-center gap-3">
             <span
               className={`${
                 isAddressFormOpen ? "bg-zinc-300" : "bg-zinc-100"
-              } px-2 py-0.5 text-blue-500 rounded`}
+              } px-2 py-0.5 text-blue-500 rounded lg:font-semibold`}
             >
               3
             </span>
             <div
-              className={`text-xl uppercase font-semibold ${
+              className={`text-lg lg:text-xl uppercase font-semibold ${
                 isAddressFormOpen ? "text-zinc-500" : "text-white"
               }`}
             >
@@ -98,41 +98,43 @@ const Orders = () => {
       </div>
 
       {!isAddressFormOpen && orderedProducts.length > 0 ? (
-        <div className={`max-w-screen-xl mx-auto h-[48vh] flex gap-5`}>
-          <div className="h-full w-[65%] flex flex-wrap overflow-y-auto bg-zinc-100 rounded-b">
-            {orderedProducts.map((elem) => (
-              <div key={elem.id} className="h-full w-full p-10 flex">
-                <div className="h-full w-[40%]">
-                  <img
-                    className="h-full w-full object-contain"
-                    src={elem.image}
-                    alt={`${elem.title}'s image`}
-                  />
+        <div className="w-full lg:h-full lg:overflow-y-auto lg:rounded-b">
+          {orderedProducts.map((elem) => (
+            <div key={elem.id} className="h-[28vh] w-full p-5 flex bg-zinc-100">
+              <div className="h-full w-[40%]">
+                <img
+                  className="h-full w-full object-contain"
+                  src={elem.image}
+                  alt={`${elem.title}'s image`}
+                />
+              </div>
+              <div className="w-full flex flex-col gap-2 pl-8 py-3">
+                <div>
+                  <h2 className="line-clamp-2 tracking-tight leading-5.5 text-lg">
+                    {elem.title}
+                  </h2>
                 </div>
-                <div className="text-2xl tracking-tight w-full p-5 flex flex-col gap-4 pl-15">
-                  <h2>{elem.title}</h2>
-                  <h3>Qty: {elem.qty}</h3>
-                  <h1 className="text-3xl flex items-center gap-2">
-                    <FaRupeeSign />
-                    {Math.round(elem.price)}
-                  </h1>
-                  <div>
-                    <button
-                      onClick={() => handleRemove(elem.id)}
-                      className="hover:bg-amber-600 px-10 py-2 bg-amber-500 rounded text-white transition-all"
-                    >
-                      Remove
-                    </button>
-                  </div>
+                <h3>Qty: {elem.qty}</h3>
+                <h1 className="text-xl flex items-center gap-2">
+                  <FaRupeeSign />
+                  {Math.round(elem.price)}
+                </h1>
+                <div>
+                  <button
+                    onClick={() => handleRemove(elem.id)}
+                    className="hover:bg-amber-600 px-10 py-1 bg-amber-500 rounded text-white transition-all"
+                  >
+                    Remove
+                  </button>
                 </div>
               </div>
-            ))}
-          </div>
-          <div className="h-full w-[35%] bg-zinc-100">
-            <h2 className="uppercase text-zinc-500 text-3xl font-semibold px-5 pt-5 pb-2 border-b">
+            </div>
+          ))}
+          <div className="w-full bg-zinc-50 lg:rounded-b">
+            <h2 className="uppercase text-zinc-500 text-3xl font-semibold py-2 text-center border-y">
               price details
             </h2>
-            <div className="flex py-5 pl-5 pr-15 items-center justify-between text-2xl ">
+            <div className="flex py-5 pl-5 pr-15 items-center justify-between text-2xl lg:justify-around">
               <h1>{`Price (${orderedProducts.length} items) :`}</h1>
               <div className="flex items-center">
                 <FaRupeeSign />
@@ -141,19 +143,19 @@ const Orders = () => {
                 </h1>
               </div>
             </div>
-            <div className="flex py-5 pl-5 pr-15 items-center justify-between text-2xl ">
-              <h1 className="capitalize font-bold">Total payable amount :</h1>
-              <div className="flex items-center">
-                <FaRupeeSign />
-                <h1 className="font-bold">
-                  {Math.round(totalPayableAmount())}
-                </h1>
-              </div>
+            <div className="flex items-center justify-center">
+              <h1 className="capitalize font-bold text-2xl border-b-2 pb-1.5">
+                Total payable amount
+              </h1>
+            </div>
+            <div className="flex items-center text-2xl justify-center mt-1.5">
+              <FaRupeeSign />
+              <h1 className="font-bold">{Math.round(totalPayableAmount())}</h1>
             </div>
             <div className="flex items-center justify-center">
               <button
                 onClick={handleConfirmOrder}
-                className="px-10 py-2 mt-5 bg-amber-600 rounded text-lg font-semibold text-white uppercase hover:bg-amber-700 transition-all"
+                className="px-10 py-2 mt-4 mb-5 bg-amber-600 rounded text-lg font-semibold text-white uppercase hover:bg-amber-700 transition-all"
               >
                 Confirm Order
               </button>
@@ -162,7 +164,7 @@ const Orders = () => {
         </div>
       ) : (
         !isAddressFormOpen && (
-          <div className="max-w-screen-xl h-[40vh] bg-white rounded-b flex flex-col items-center justify-center">
+          <div className="h-[50vh] bg-white rounded-b flex flex-col items-center justify-center lg:h-full">
             <div className="h-[50%] w-full">
               <img
                 className="h-full w-full object-contain"
@@ -175,7 +177,7 @@ const Orders = () => {
             </h4>
             <button
               onClick={goToHomePage}
-              className="px-10 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
+              className="lg:font-semibold px-10 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
             >
               Shop now
             </button>

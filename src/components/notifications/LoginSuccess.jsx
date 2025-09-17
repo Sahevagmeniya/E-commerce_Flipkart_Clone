@@ -16,7 +16,7 @@ const LoginSuccess = () => {
   }, []);
 
   return (
-    <div className="h-[91vh] w-full flex items-center justify-center">
+    <div className="h-[85.5vh] w-full flex items-center justify-center lg:h-[89vh]">
       <div className="flex flex-col items-center justify-center gap-3">
         <h1 className="text-3xl font-bold">🎉</h1>
         <h1 className="text-3xl font-bold text-green-600">

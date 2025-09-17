@@ -14,26 +14,26 @@ const Ratings = ({ rating }) => {
   const emptyStar = 5 - fullStar - (isHalfStar ? 1 : 0);
 
   return (
-    <div className="text-xl">
+    <div className="text-xl mb-3 lg:text-2xl">
       Ratings:
-      <div className="flex items-center">
+      <div className="flex items-center text-2xl text-green-500 lg:text-3xl lg:mt-1.5">
         {/* full stars*/}
         {[...Array(fullStar)].map((elem, idx) => (
-          <FaStar key={idx} className="text-3xl text-green-500" />
+          <FaStar key={idx} />
         ))}
 
         {/* Half star (isHalfStar true hoga to half star render hoga agar false hoga to kuch render nahi hoga)*/}
-        {isHalfStar && <FaStarHalfAlt className="text-3xl text-green-500" />}
+        {isHalfStar && <FaStarHalfAlt />}
 
         {/* Empty star */}
         {[...Array(emptyStar)].map((elem, idx) => (
-          <FaRegStar key={idx} className="text-3xl text-green-500" />
+          <FaRegStar key={idx} />
         ))}
 
-        <span className="text-xl ml-2 px-2 rounded flex items-center gap-1 bg-green-500 text-white">
+        <span className="text-lg ml-2 px-2 rounded flex items-center gap-1 bg-green-500 text-white lg:text-2xl">
           {rate.toFixed(1)} <FaStar />
         </span>
-        <span className="text-black ml-1 text-xl">({count} Reviews)</span>
+        <span className="text-black ml-1 text-lg lg:text-2xl">({count} Reviews)</span>
       </div>
     </div>
   );

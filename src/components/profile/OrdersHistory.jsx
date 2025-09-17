@@ -45,30 +45,33 @@ const OrderHistory = () => {
   }, []);
 
   return (
-    <div className="h-[80vh] max-w-screen-xl mx-auto mt-10 rounded flex flex-wrap overflow-y-auto bg-zinc-100">
+    <div className="h-[85.5vh] w-full flex flex-wrap overflow-y-auto bg-zinc-50 lg:h-[90vh] lg:bg-zinc-300">
       {loginUserData.orderedHistory.length > 0 ? (
         loginUserData.orderedHistory.map((elem, idx) => (
-          <div
-            key={idx}
-            className="h-[25vh] w-full mx-10 mt-5 flex border relative"
-          >
+          <div key={idx} className="h-[18vh] w-full m-2 flex border relative lg:w-[75%] lg:mx-auto lg:bg-zinc-50 lg:border-none lg:rounded">
             <MdDelete
               onClick={() => deleteHistroy(elem.id)}
-              className="absolute text-2xl top-5.5 right-2 hover:scale-115 transition-all"
+              className="absolute text-xl top-2 right-1 hover:scale-115 transition-all"
             />
-            <div className="h-full w-[20%]">
+            <div className="h-full w-[25%]">
               <img
-                className="h-full w-full object-contain p-5"
+                className="h-full w-full object-contain p-2.5"
                 src={elem.image}
                 alt={`${elem.title}'s image`}
               />
             </div>
-            <div className="h-full w-[80%] flex">
-              <div className="h-full w-[20%] pl-5 pt-5">{elem.title}</div>
-              <div className="h-full w-[55%] pl-5 pt-5 tracking-tight">
+            <div className="h-full w-[80%] p-2">
+              <div className="w-[95%] line-clamp-1 text-lg font-bold">
+                {elem.title}
+              </div>
+              <div className="w-full line-clamp-2 tracking-tight leading-5 my-0.5">
                 {elem.description}
               </div>
-              <div className="h-full w-[25%] pl-5 flex flex-col justify-between items-center py-5 px-5">
+              <div className="leading-none mt-1.5">
+                <h3 className="flex items-center">
+                  <FaRupeeSign />
+                  {Math.round(elem.price)}
+                </h3>
                 <h2
                   className={`${
                     processing ? "text-amber-600" : "text-green-500"
@@ -77,17 +80,13 @@ const OrderHistory = () => {
                   <GoDotFill />
                   {processing ? "Processing..." : "Delivered"}
                 </h2>
-                <h3 className="flex items-center">
-                  <FaRupeeSign />
-                  {Math.round(elem.price)}
-                </h3>
               </div>
             </div>
           </div>
         ))
       ) : (
-        <div className="bg-white h-full w-full rounded flex flex-col items-center">
-          <div className="h-[50%] w-[50%]">
+        <div className="bg-white h-full w-full flex flex-col items-center lg:h-[85%] lg:w-[75%] lg:m-auto lg:rounded">
+          <div className="h-[50%] w-[50%] mb-[-17%] lg:mb-0">
             <img
               className="h-full w-full object-contain pt-22"
               src="https://rukminim2.flixcart.com/www/800/800/promos/16/05/2019/d438a32e-765a-4d8b-b4a6-520b560971e8.png?q=90"
@@ -100,7 +99,7 @@ const OrderHistory = () => {
           <p className="mt-2">Go and Shop Now</p>
           <button
             onClick={handleShopNowButton}
-            className="px-10 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
+            className="lg:font-semibold px-10 py-2 mt-3 text-white bg-blue-500 rounded hover:bg-blue-600 transition-all"
           >
             Shop now
           </button>

@@ -99,36 +99,39 @@ const AddressDetails = () => {
   const inputClass =
     "peer w-full h-full outline-none pt-6 pb-2 border focus:border-blue-500 px-2";
   const lableClass =
-    "absolute px-2 left-0 top-0 w-full text-sm text-zinc-500 pointer-events-none transition-all peer-placeholder-shown:top-2.5 peer-placeholder-shown:text-lg peer-focus:top-0 peer-focus:text-sm";
-  const errorClass = "text-red-500 font-semibold text-sm pl-1.5 pt-0.5";
+    "absolute px-2 left-0 top-0 w-full text-sm text-zinc-500 pointer-events-none transition-all peer-placeholder-shown:top-3.5 peer-focus:top-0 peer-focus:text-sm";
+  const errorClass =
+    "text-red-500 font-semibold text-sm pl-0.5 pt-0.5 leading-none";
 
   return (
     <>
       {/* Address details */}
       <div
-        className={`w-full h-[8vh] rounded-t ${
-          isAddressFormOpen ? "bg-blue-500 text-white" : "bg-zinc-100"
-        } flex items-center px-5 justify-between gap-5 mt-2`}
+        className={`w-full h-[6vh] lg:h-[8vh] lg:rounded-t ${
+          isAddressFormOpen
+            ? "bg-blue-500 text-white"
+            : "bg-zinc-100 h-[8vh]"
+        } flex items-center px-5 justify-between gap-3 mt-3`}
       >
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <span
             className={`px-2 py-0.5 ${
               isAddressFormOpen ? "bg-zinc-100" : "bg-zinc-300"
-            } text-blue-500 rounded`}
+            } text-blue-500 rounded lg:font-semibold`}
           >
             2
           </span>
-          <div
-            className={`text-xl uppercase font-semibold ${
+          <p
+            className={`text-lg uppercase lg:text-xl font-semibold whitespace-nowrap ${
               isAddressFormOpen ? "text-white" : "text-zinc-500"
             }`}
           >
             Delivery Address
-          </div>
+          </p>
           {/* if Address form filled than this blue tick shows */}
           {!isAddressFormOpen && (
             <span>
-              <MdOutlineDone className="text-2xl text-blue-500" />
+              <MdOutlineDone className="text-xl lg:text-2xl text-blue-500" />
             </span>
           )}
         </div>
@@ -136,14 +139,14 @@ const AddressDetails = () => {
         {!isAddressFormOpen && (
           <button
             onClick={handleEditAddress}
-            className="font-semibold px-5 py-1 border rounded hover:bg-blue-500 hover:text-white"
+            className="font-semibold px-2 py-0.5 text-sm border rounded hover:bg-blue-500 hover:text-white lg:text-lg lg:px-5 lg:py-1"
           >
             Change Address
           </button>
         )}
       </div>
       {!isAddressFormOpen && (
-        <div className="w-full bg-zinc-100 pl-14 pb-5 pt-1 rounded-b">
+        <div className="w-full bg-zinc-100 pl-14 pb-5 pt-1 h-auto lg:rounded-b">
           <div className="font-bold capitalize">{name}</div>
           <div>{area}</div>
           {locality} , {city} , {state}
@@ -151,15 +154,19 @@ const AddressDetails = () => {
         </div>
       )}
       {isAddressFormOpen && (
-        <div className="h-[54vh] w-full bg-zinc-100 rounded-b px-20 py-5">
+        <div className="h-[48vh] w-full bg-zinc-100 py-5 px-1.5">
           <form
             onSubmit={handleSubmit((addressData) =>
               handleAddressData(addressData)
             )}
           >
             {/* name */}
-            <div className="flex flex-wrap justify-center gap-7.5">
-              <div className="relative w-[45%] h-12">
+            <div className="flex flex-wrap justify-center gap-4.5">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.nameError && "mb-8 lg:mb-2.5"
+                }`}
+              >
                 <input
                   {...register("name")}
                   required //Blank input ko check karega
@@ -179,7 +186,11 @@ const AddressDetails = () => {
               </div>
 
               {/* mobile number */}
-              <div className="relative w-[45%] h-12">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.mobileNumberError && "mb-5 lg:mb-2.5"
+                }`}
+              >
                 <input
                   {...register("mobileNumber")}
                   required //Blank input ko check karega
@@ -200,7 +211,11 @@ const AddressDetails = () => {
                 )}
               </div>
               {/* pincode */}
-              <div className="relative w-[45%] h-12">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.pincodeError && "mb-4.5 lg:mb-2"
+                }`}
+              >
                 <input
                   {...register("pincode")}
                   required //Blank input ko check karega
@@ -219,7 +234,11 @@ const AddressDetails = () => {
                 )}
               </div>
               {/* Locality */}
-              <div className="relative w-[45%] h-12">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.localityError && "mb-10.5 lg:mb-2.5"
+                }`}
+              >
                 <input
                   {...register("locality")}
                   required //Blank input ko check karega
@@ -241,7 +260,11 @@ const AddressDetails = () => {
               </div>
 
               {/* address area & street */}
-              <div className="relative w-[92.8%] h-12">
+              <div
+                className={`relative w-[95%] lg:w-[91.8%] h-12 ${
+                  addressFormErrors.areaError && "mb-4.5 lg:mb-2"
+                }`}
+              >
                 <input
                   {...register("area")}
                   required //Blank input ko check karega
@@ -260,7 +283,11 @@ const AddressDetails = () => {
                 )}
               </div>
               {/* City */}
-              <div className="relative w-[45%] h-12">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.cityError && "mb-5 lg:mb-0"
+                }`}
+              >
                 <input
                   {...register("city")}
                   required //Blank input ko check karega
@@ -274,13 +301,17 @@ const AddressDetails = () => {
                   }
                 />
                 <label className={lableClass}>City/District/Towen</label>
-                {addressFormErrors.ciryError && (
+                {addressFormErrors.cityError && (
                   <p className={errorClass}>{addressFormErrors.cityError}</p>
                 )}
               </div>
 
               {/* State */}
-              <div className="relative w-[45%] h-12">
+              <div
+                className={`relative w-[45%] h-12 ${
+                  addressFormErrors.stateError && "mb-3.5 lg:mb-0"
+                }`}
+              >
                 <input
                   {...register("state")}
                   required //Blank input ko check karega
@@ -301,7 +332,7 @@ const AddressDetails = () => {
             </div>
             <div className="flex justify-center mt-6.5">
               <button
-                className="w-[30%] py-2 hover:bg-amber-700  bg-amber-600 rounded text-white text-lg transition-all"
+                className="py-2 px-5 hover:bg-amber-700  bg-amber-600 rounded text-white text-lg transition-all"
                 type="submit"
               >
                 Save & Deliver Here
