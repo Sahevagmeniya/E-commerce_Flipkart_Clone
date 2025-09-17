@@ -9,7 +9,7 @@ const Signup = () => {
   const [signUpPasswordError, setSignUpPasswordError] = useState([]);
   const [signUpConfirmPasswordError, setSignUpConfirmPasswordError] =
     useState("");
-  const { setUsersData } = useContext(myContext);
+  const { setUsersData, usersData } = useContext(myContext);
 
   const fullNameRegix = /^[A-Za-z]+(?:\s[A-Za-z]+)*$/;
   const emailRegix = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -37,10 +37,13 @@ const Signup = () => {
       isSignUpValid = false;
       return;
     }
-
     if (!emailRegix.test(signUpEmail)) {
       setSignUpEmailError("Please enter a valid email address");
       isSignUpValid = false;
+      return;
+    }
+    if (usersData.find((elem) => elem.email === signUpEmail)) {
+      setSignUpEmailError("Email id already registered.");
       return;
     }
 
@@ -61,7 +64,6 @@ const Signup = () => {
       isSignUpValid = false;
       return;
     }
-
     if (isSignUpValid) {
       setUsersData((prev) => [
         ...prev,
