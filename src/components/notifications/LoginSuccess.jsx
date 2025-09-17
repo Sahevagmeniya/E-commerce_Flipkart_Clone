@@ -18,11 +18,13 @@ const LoginSuccess = () => {
   return (
     <div className="h-[85.5vh] w-full flex items-center justify-center lg:h-[89vh]">
       <div className="flex flex-col items-center justify-center gap-3">
-        <h1 className="text-3xl font-bold">🎉</h1>
-        <h1 className="text-3xl font-bold text-green-600">
+        <h1 className="text-3xl font-bold lg:text-5xl lg:pl-4"> 🎉</h1>
+        <h1 className="text-3xl font-bold text-green-600 lg:text-4xl">
           Login Successfully!
         </h1>
-        <p className="text-gray-500">Redirecting to profile page...</p>
+        <p className="text-gray-500 lg:text-lg">
+          Redirecting to profile page...
+        </p>
       </div>
     </div>
   );
