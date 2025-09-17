@@ -6,7 +6,7 @@ const OrderConfirmed = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate(`/`), 3000);
+    const timer = setTimeout(() => navigate(`/`), 300000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -20,7 +20,7 @@ const OrderConfirmed = () => {
         <h1 className="text-xl font-bold lg:hidden">
           Congratulations🎉 Order Confirmed.
         </h1>
-        <h1 className="text-xl font-bold pl-10 hidden lg:flex">
+        <h1 className="text-xl font-bold pl-10 hidden lg:flex lg:text-4xl">
           Congratulations🎉Order Confirmed.
         </h1>
       </div>

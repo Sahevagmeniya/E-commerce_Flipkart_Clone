@@ -13,11 +13,11 @@ const AccountCreated = () => {
   return (
     <div className="h-[85.5vh] w-full flex items-center justify-center lg:h-[89vh]">
       <div className="flex flex-col items-center justify-center gap-3">
-        <h1 className="text-3xl font-bold">🎉</h1>
-        <h1 className="text-3xl font-bold text-green-600">
+        <h1 className="text-3xl font-bold lg:text-5xl">🎉</h1>
+        <h1 className="text-3xl font-bold text-green-600 lg:text-4xl">
           Account Created Successfully!
         </h1>
-        <p className="text-gray-500">Redirecting to login page...</p>
+        <p className="text-gray-500 lg:text-lg">Redirecting to login page...</p>
       </div>
     </div>
   );
